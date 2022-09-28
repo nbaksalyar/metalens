@@ -1,0 +1,25 @@
+WHITESPACE = _{ " " | "\t" | "\r" | "\n" }
+
+char = _{ ASCII_ALPHANUMERIC | "_" }
+ident = { char+ }
+property = { ident ~ "." ~ ident }
+
+binary_op = { "&&" | "||" | "=" | "!=" | ">=" | "<=" | "<" | ">" | "+" }
+
+str_inner = @{ str_char* }
+str_char = {
+    !("\"" | "\\") ~ ANY
+    | "\\" ~ ("\"" | "\\" | "/" | "b" | "f" | "n" | "r" | "t")
+    | "\\" ~ ("u" ~ ASCII_HEX_DIGIT{4})
+}
+
+literal_string = { "\"" ~ str_inner ~ "\"" }
+literal_number = { "-"? ~ ("0" | ASCII_NONZERO_DIGIT ~ ASCII_DIGIT*) }
+literal_bool = { "true" | "false" }
+
+literal_value = { literal_string | literal_number | literal_bool }
+
+count = { "count(" ~ ident ~ ")" }
+
+expression = { term ~ (binary_op ~ term)* }
+term = { count | property | literal_value | "(" ~ expression ~ ")" }

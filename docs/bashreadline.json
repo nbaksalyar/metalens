@@ -1,0 +1,26 @@
+[
+    {
+        "@type": "Node",
+        "@id": 1,
+        "@inputs": [],
+        "name": "readline",
+        "node_type": "UProbe",
+        "node_properties": { "program": "\"/bin/bash\"", "function": "\"readline\"" }
+    },
+    {
+        "@type": "Node",
+        "@id": 2,
+        "@inputs": [1],
+        "name": null,
+        "node_type": "Filter",
+        "node_properties": { "value": "input.process_name = \"bash\"" }
+    },
+    {
+        "@type": "Node",
+        "@id": 3,
+        "@inputs": [2],
+        "name": "result",
+        "node_type": "Label",
+        "node_properties": { "value": "input.pid" }
+    }
+]

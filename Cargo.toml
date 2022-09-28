@@ -1,0 +1,23 @@
+[package]
+name = "metalens"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# inkwell = { git = "https://github.com/TheDan64/inkwell", features = ["llvm13-0"] }
+inkwell = { git = "https://github.com/nbaksalyar/inkwell", branch = "pointer-compare", features = ["llvm14-0"] }
+pest = "2.1"
+pest_derive = "2.1"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+petgraph = "0.6.0"
+# redbpf = { version = "2.3.0", features = ["load"] }
+redbpf = { git = "https://github.com/nbaksalyar/redbpf", branch = "ringbufs-rebase", features = ["load"] }
+usdt-reader = { git = "https://github.com/nbaksalyar/usdt-reader" }
+tracing = "*"
+tracing-subscriber = "0.3"
+tokio = { version = "1", features = ["full"] }
+futures = "0.3"
+tokio-tungstenite = "*"
