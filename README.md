@@ -1,4 +1,4 @@
-![Metalens logo](docs/logo.png)
+<img src="docs/logo.png" alt="Metalens logo" width="400" />
 
 Stream-based visual programming language for systems observability.
 
